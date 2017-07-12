@@ -1,0 +1,5 @@
+@import "_variables.scss";
+
+@mixin sample-mixin($value: 5px) {
+    padding: value;
+}
