@@ -6,7 +6,7 @@ function getBaseHref() {
 module.exports = {
     httpsDev: false,
     buildDir: 'dist',
-    siteTitle: 'Minimalistic React Starter',
+    siteTitle: 'SnippHub',
 
     baseHrefDev: '/',
     // If you deploy it under a virtual directory use '/{virtualPath}/'.

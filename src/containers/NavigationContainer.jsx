@@ -1,36 +1,55 @@
 import React, { Component } from 'react';
 import {
-    Link
+    Link,
+    withRouter,
 } from 'react-router-dom';
+import { assign } from 'office-ui-fabric-react/lib/Utilities';
+import { CommandBar } from 'office-ui-fabric-react/lib/CommandBar';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 import { siteTitle } from '../../config/global.config';
 
 class NavigationContainer extends Component {
+    constructor(props) {
+        super(props);
+    }
+
+    componentWillMount() {
+        this.items = [
+            {
+                name: '',
+                iconProps: { iconName: 'Sync' },
+                key: 'user',
+                onClick: () => false
+            }
+        ];
+
+        this.farItems = [
+            {
+                name: 'Kruemelkatze',
+                iconProps: { iconName: 'Contact' },
+                key: 'user',
+                onClick: () => this.props.history.push("/")
+            }
+        ];
+    }
+
     render() {
         return (
-            <nav className="navbar navbar-inverse navbar-fixed-top">
-                <div className="container">
-                    <div className="navbar-header">
-                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                            <span className="sr-only">Toggle navigation</span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                            <span className="icon-bar"></span>
-                        </button>
-                        <Link to="/" className="navbar-brand">
-                            {siteTitle}
-                        </Link>
-                    </div>
-                    <div id="navbar" className="collapse navbar-collapse">
-                        <ul className="nav navbar-nav">
-                            <li><Link to="/">Overview</Link></li>
-                            <li><Link to="/1">Details to 1</Link></li>
-                        </ul>
-                    </div>
+            <div id="header">
+                <div className="logo">
+                    <h2>{siteTitle}</h2>
                 </div>
-            </nav>
+                <CommandBar
+                    isSearchBoxVisible='true'
+                    searchPlaceholderText='Search...'
+                    elipisisAriaLabel='More options'
+                    items={this.items}
+                    farItems={this.farItems}
+                />
+            </div>
         );
     }
 }
 
-export default NavigationContainer;
+export default withRouter(NavigationContainer);

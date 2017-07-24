@@ -1,13 +1,17 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+// @import "~bootstrap/dist/css/bootstrap.css";
+@import "~office-ui-fabric-react/dist/css/fabric.css";
+// @import "~winstrap/dist/css/winstrap.css";
 
 @import "_variables.scss";
 @import "_mixins.scss";
 @import "testPanels.scss";
+@import "layout.scss";
 
 body {
-  padding-top: $top-offset;
+  margin: 0;
 }
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+
+#header {
+    color: white;
+    background-color: #141127;
 }

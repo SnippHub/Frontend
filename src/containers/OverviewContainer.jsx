@@ -18,6 +18,8 @@ class OverviewContainer extends Component {
             <div className="starter-template">
                 <h1>{this.state.text}</h1>
                 <div className="list-group">{list}</div>
+
+                <i className="ms-Icon ms-Icon--Mail" aria-hidden="true"></i>
             </div>
         );
     }

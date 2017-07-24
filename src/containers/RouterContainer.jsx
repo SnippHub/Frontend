@@ -16,9 +16,11 @@ class RouterContainer extends Component {
 
     render() {
         return (
-            <div className="container">
-                <Route exact path={"/"} component={OverviewContainer} />
-                <Route exact path={"/:id"} component={DetailContainer} />
+            <div id="content">
+                <div className="container">
+                    <Route exact path={"/"} component={OverviewContainer} />
+                    <Route exact path={"/:id"} component={DetailContainer} />
+                </div>
             </div>
         );
     }
