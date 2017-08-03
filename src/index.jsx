@@ -6,6 +6,12 @@ import ReactDOM from 'react-dom';
 
 import AppContainer from 'containers/AppContainer';
 
+//Clarity Scripts
+import 'mutationobserver-shim';
+import '@webcomponents/custom-elements';
+import 'clarity-icons';
+
+
 const rootElement = document.getElementById('app');
 const render = Component =>
     ReactDOM.render(
