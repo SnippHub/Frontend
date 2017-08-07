@@ -9,7 +9,8 @@ import AppContainer from 'containers/AppContainer';
 //Clarity Scripts
 import 'mutationobserver-shim';
 import '@webcomponents/custom-elements';
-import 'clarity-icons';
+import 'clarity-icons'; // loads only core-shapes alone and Clarity Icons API
+import 'clarity-icons/shapes/all-shapes'; // loads all shapes from all sets
 
 
 const rootElement = document.getElementById('app');

@@ -1,0 +1,16 @@
+@import "_variables.scss";
+@import "_mixins.scss";
+
+.main-sidebar {
+    max-width: $main-sidebar-width;
+    background: $main-sidebar-bg;    
+}
+
+.snippet-list {
+    min-width: $snippet-list-width;
+    max-width: $snippet-list-width;
+}
+
+header, .header {
+    background-color: $header-color;
+}
