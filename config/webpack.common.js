@@ -18,53 +18,53 @@ module.exports = {
     },
     module: {
         rules: [{
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                loader: "babel-loader",
-                options: {
-                    cacheDirectory: true
-                }
-            }, {
-                test: /\.css$/,
-                use: extractCss.extract({
-                    fallback: "style-loader",
-                    use: [{
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    }]
-                })
-            },
-            {
-                test: /\.scss$/,
-                use: extractCss.extract({
-                    use: [{
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    }, {
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    }],
-                    fallback: "style-loader"
-                })
-            },
-            {
-                test: /\.(woff|woff2|eot|ttf|otf)$/,
-                use: [
-                    'file-loader'
-                ]
-            },
-            {
-                test: /\.(png|svg|jpg|gif)$/,
-                use: [
-                    'file-loader'
-                ]
+            test: /\.(js|jsx)$/,
+            exclude: /node_modules/,
+            loader: "babel-loader",
+            options: {
+                cacheDirectory: true
             }
+        }, {
+            test: /\.css$/,
+            use: extractCss.extract({
+                fallback: "style-loader",
+                use: [{
+                    loader: "css-loader",
+                    options: {
+                        sourceMap: true
+                    }
+                }]
+            })
+        },
+        {
+            test: /\.scss$/,
+            use: extractCss.extract({
+                use: [{
+                    loader: "css-loader",
+                    options: {
+                        sourceMap: true
+                    }
+                }, {
+                    loader: "sass-loader",
+                    options: {
+                        sourceMap: true
+                    }
+                }],
+                fallback: "style-loader"
+            })
+        },
+        {
+            test: /\.(woff|woff2|eot|ttf|otf)$/,
+            use: [
+                'file-loader'
+            ]
+        },
+        {
+            test: /\.(png|svg|jpg|gif)$/,
+            use: [
+                'file-loader'
+            ]
+        }
         ]
     },
     entry: {
@@ -81,6 +81,11 @@ module.exports = {
             title: globalConfig.siteTitle,
             template: 'src/index.ejs',
             baseHref: globalConfig.getBaseHref()
+        }),
+        new webpack.ProvidePlugin({
+            _: 'lodash',
+            moment: 'moment',
+            $: 'jquery',
         })
     ]
 };
