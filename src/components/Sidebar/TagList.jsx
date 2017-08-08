@@ -1,14 +1,16 @@
 import React, { PropTypes } from 'react'
 
 const TagList = props => {
+    var items = props.tags.map(({ color, name }) => {
+        let style = { color };
+        return <li key={name}>
+            <a className="nav-link" style={style}>{name}</a>
+        </li>
+    })
+
     return (
         <ul className={props.className}>
-            <li><a className="nav-link">Frontend</a></li>
-            <li><a className="nav-link">React</a></li>
-            <li><a className="nav-link">CSS</a></li>
-            <li><a className="nav-link">Common</a></li>
-            <li><a className="nav-link">JS Library</a></li>
-            <li><a className="nav-link">Custom Theme</a></li>
+            {items}
         </ul>
     )
 }

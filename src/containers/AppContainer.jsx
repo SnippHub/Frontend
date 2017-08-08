@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   BrowserRouter,
 } from 'react-router-dom'
+import { Provider } from 'mobx-react';
 
 import HeaderContainer from "containers/HeaderContainer";
 import SidebarContainer from "containers/SidebarContainer";
@@ -11,15 +12,21 @@ import SnippetContainer from "containers/SnippetContainer";
 import racoonImg from 'images/racoon.jpg';
 import racoon2Img from 'images/racoon2.jpg';
 
-import { getBaseHref } from '../../config/global.config';
+import config from '../../config/global.config';
+import TagStore from 'stores/TagStore';
+import SnippetStore from 'stores/SnippetStore';
 
 class App extends Component {
-  baseHref = getBaseHref()
+  baseHref = config.getBaseHref()
+
+  //GlobalStores
+  tagStore = new TagStore();
+  snippetStore = new SnippetStore();
 
   render() {
     return (
       <BrowserRouter basename={this.baseHref}>
-        <div>
+        <Provider tagStore={this.tagStore} snippetStore={this.snippetStore}>
           <div className="main-container">
             <HeaderContainer></HeaderContainer>
             <div className="content-container">
@@ -32,7 +39,7 @@ class App extends Component {
 
             </div>
           </div>
-        </div>
+        </Provider>
       </BrowserRouter>
     );
   }

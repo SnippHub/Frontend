@@ -4,10 +4,16 @@ import {
     NavLink,
     withRouter,
 } from 'react-router-dom';
+import { observer, inject } from 'mobx-react';
 
 import TagList from 'components/Sidebar/TagList';
 
+@inject("tagStore") @observer
 class SidebarContainer extends Component {
+    componentWillMount() {
+        this.props.tagStore.loadTags();
+    }
+
     render() {
         return (
             <nav className="sidenav sidebar main-sidebar">
@@ -23,8 +29,8 @@ class SidebarContainer extends Component {
                     </NavLink>
 
                     <section className="nav-group">
-                        <label for="tabexample2">Global Tags</label>
-                        <TagList className="nav-list"></TagList>
+                        <label>Global Tags</label>
+                        <TagList className="nav-list" tags={this.props.tagStore.globalTags}></TagList>
                     </section>
                 </section>
 
